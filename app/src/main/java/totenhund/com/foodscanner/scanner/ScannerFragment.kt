@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
@@ -35,13 +34,14 @@ class ScannerFragment : Fragment() {
         codeScanner = CodeScanner(activity, binding.scannerView)
         codeScanner.decodeCallback = DecodeCallback {
             requireActivity().runOnUiThread {
-                Toast.makeText(activity, it.text, Toast.LENGTH_LONG).show()
+                val action = ScannerFragmentDirections.actionScannerFragmentToProductFragment(it.text)
+                findNavController(this).navigate(action)
             }
         }
 
         codeScanner.errorCallback = ErrorCallback {
             requireActivity().runOnUiThread{
-                findNavController().navigate(R.id.startFragment)
+                findNavController(this).navigate(R.id.startFragment)
             }
         }
 

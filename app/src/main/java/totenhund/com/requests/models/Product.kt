@@ -1,4 +1,4 @@
-package totenhund.com.foodscanner.requests.models
+package totenhund.com.requests.models
 
 data class Product(
     var title: String,

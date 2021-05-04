@@ -15,7 +15,16 @@
         android:name="totenhund.com.foodscanner.scanner.ScannerFragment"
         android:label="ScannerFragment" >
         <action
-            android:id="@+id/action_scannerFragment_to_startFragment"
-            app:destination="@id/startFragment" />
+            android:id="@+id/action_scannerFragment_to_productFragment"
+            app:destination="@id/productFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="totenhund.com.foodscanner.product.ProductFragment"
+        android:label="ProductFragment" >
+        <argument
+            android:name="qrCode"
+            android:defaultValue="1"
+            app:argType="string" />
     </fragment>
 </navigation>
