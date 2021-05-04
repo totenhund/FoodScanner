@@ -87,4 +87,11 @@ dependencies {
 
 //    kapt 'com.android.databinding:compiler:3.1.4'
 
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+
+
 }
