@@ -37,19 +37,20 @@ class ProductFragment : Fragment() {
         mService = Common.retrofitServices
         val productFragmentArgs by navArgs<ProductFragmentArgs>()
         getProduct(productFragmentArgs.qrCode)
+        Log.e("QRCODE", productFragmentArgs.qrCode)
 
         return binding.root
     }
 
     private fun getProduct(qrCode: String){
 
-        mService.getProduct(token = "Bearer ", qrCode = qrCode).enqueue(object : Callback<Product>{
+        mService.getProduct(qrCode).enqueue(object : Callback<Product>{
             override fun onFailure(call: Call<Product>, t: Throwable) {
-                binding.food.text = t.cause.toString()
+                binding.food.text = "Wi-Fi is not connected"
             }
 
             override fun onResponse(call: Call<Product>, response: Response<Product>) {
-                binding.food.text = response.body()?.title
+                binding.food.text = response.body()?.productName
             }
         })
     }

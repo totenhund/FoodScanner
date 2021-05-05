@@ -2,6 +2,7 @@ package totenhund.com.foodscanner.scanner
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,7 @@ class ScannerFragment : Fragment() {
         codeScanner.decodeCallback = DecodeCallback {
             requireActivity().runOnUiThread {
                 val action = ScannerFragmentDirections.actionScannerFragmentToProductFragment(it.text)
+                Log.e("QRCODE_SCANNER", it.text)
                 findNavController(this).navigate(action)
             }
         }

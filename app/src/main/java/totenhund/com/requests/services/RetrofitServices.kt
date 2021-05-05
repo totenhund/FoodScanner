@@ -9,5 +9,5 @@ import totenhund.com.requests.models.Product
 
 interface RetrofitServices {
     @GET("products/{qrCode}")
-    fun getProduct(@Header("Authorization") token: String,  @Path(value = "qrCode") qrCode: String): Call<Product>
+    fun getProduct(@Path(value = "qrCode") qrCode: String): Call<Product>
 }
