@@ -1,6 +1,7 @@
 package totenhund.com.foodscanner.product
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import totenhund.com.requests.models.Product
 import totenhund.com.requests.services.RetrofitServices
 import retrofit2.Callback
 import retrofit2.Response
+import totenhund.com.requests.common.Common
 
 
 class ProductFragment : Fragment() {
@@ -32,6 +34,7 @@ class ProductFragment : Fragment() {
             false
         )
 
+        mService = Common.retrofitServices
         val productFragmentArgs by navArgs<ProductFragmentArgs>()
         getProduct(productFragmentArgs.qrCode)
 
@@ -39,9 +42,10 @@ class ProductFragment : Fragment() {
     }
 
     private fun getProduct(qrCode: String){
-        mService.getProduct(qrCode).enqueue(object : Callback<Product>{
-            override fun onFailure(call: Call<Product>, t: Throwable) {
 
+        mService.getProduct(token = "Bearer ", qrCode = qrCode).enqueue(object : Callback<Product>{
+            override fun onFailure(call: Call<Product>, t: Throwable) {
+                binding.food.text = t.cause.toString()
             }
 
             override fun onResponse(call: Call<Product>, response: Response<Product>) {
