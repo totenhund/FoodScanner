@@ -46,11 +46,11 @@ class ProductFragment : Fragment() {
 
         mService.getProduct(qrCode).enqueue(object : Callback<Product>{
             override fun onFailure(call: Call<Product>, t: Throwable) {
-                binding.food.text = "Wi-Fi is not connected"
+//                binding.expandingListMain.food.text = "Wi-Fi is not connected"
             }
 
             override fun onResponse(call: Call<Product>, response: Response<Product>) {
-                binding.food.text = response.body()?.productName
+//                binding.food.text = response.body()?.productName
             }
         })
     }

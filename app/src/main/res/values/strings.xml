@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">FoodScanner</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titleProductEmpty">Title</string>
     <string name="scan_button_text">SCAN</string>
+    <string name="e_adds">E adds</string>
+    <string name="mediumResult">Medium</string>
+    <string name="incidents">Incidents</string>
+    <string name="calories">Calories:</string>
+    <string name="gram">Gram:</string>
 </resources>
