@@ -22,6 +22,10 @@
         <item name="android:textStyle">
             bold
         </item>
+
+        <item name="fontFamily">
+            @font/mont_reg
+        </item>
     </style>
 
     <style name="secondHeading">
@@ -32,11 +36,19 @@
         <item name="android:textStyle">
             bold
         </item>
+
+        <item name="fontFamily">
+            @font/mont_reg
+        </item>
     </style>
 
     <style name="text">
         <item name="android:textSize">
             17sp
+        </item>
+
+        <item name="fontFamily">
+            @font/mont_reg
         </item>
     </style>
 

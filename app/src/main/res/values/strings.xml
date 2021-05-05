@@ -8,4 +8,6 @@
     <string name="incidents">Incidents</string>
     <string name="calories">Calories:</string>
     <string name="gram">Gram:</string>
+    <string name="gramEmpty">300</string>
+    <string name="ingredientsEmpty">ingredients, ingredients</string>
 </resources>

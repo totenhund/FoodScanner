@@ -26,6 +26,7 @@
                 android:layout_marginTop="70dp"
                 android:layout_marginEnd="16dp"
                 app:cardCornerRadius="8dp"
+                app:cardElevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -79,7 +80,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginEnd="@dimen/caloriesSpace"
-                            android:text="300" />
+                            android:text="@string/gramEmpty" />
 
                         <TextView
                             android:id="@+id/gramTextView"
@@ -90,7 +91,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="@dimen/textSpace"
                             android:layout_marginEnd="@dimen/caloriesSpace"
-                            android:text="100" />
+                            android:text="@string/gramEmpty" />
 
                     </RelativeLayout>
 
@@ -121,7 +122,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/ingredientsTitle"
                             android:layout_marginTop="@dimen/textSpace"
-                            android:text="ingredients, ingredients"
+                            android:text="@string/ingredientsEmpty"
                             android:textAlignment="center" />
 
                     </RelativeLayout>
@@ -137,6 +138,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 app:cardCornerRadius="8dp"
+                app:cardElevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/foodInfoCard">
@@ -164,7 +166,7 @@
                         android:layout_marginTop="@dimen/textSpace"
                         android:layout_marginEnd="20dp"
                         android:layout_marginBottom="16dp"
-                        android:text="ingredients, ingredients"
+                        android:text="@string/ingredientsEmpty"
                         android:textAlignment="center" />
 
                 </RelativeLayout>
@@ -179,8 +181,11 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
                 app:cardBackgroundColor="#FCA311"
                 app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/eAddsCard">
