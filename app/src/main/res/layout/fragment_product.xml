@@ -122,8 +122,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/ingredientsTitle"
                             android:layout_marginTop="@dimen/textSpace"
-                            android:text="@string/ingredientsEmpty"
-                            android:textAlignment="center" />
+                            android:text="@string/ingredientsEmpty" />
 
                     </RelativeLayout>
 

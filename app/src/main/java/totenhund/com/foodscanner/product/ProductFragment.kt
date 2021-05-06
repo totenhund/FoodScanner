@@ -37,7 +37,6 @@ class ProductFragment : Fragment() {
         mService = Common.retrofitServices
         val productFragmentArgs by navArgs<ProductFragmentArgs>()
         getProduct(productFragmentArgs.qrCode)
-        Log.e("QRCODE", productFragmentArgs.qrCode)
 
         return binding.root
     }
@@ -46,13 +45,45 @@ class ProductFragment : Fragment() {
 
         mService.getProduct(qrCode).enqueue(object : Callback<Product>{
             override fun onFailure(call: Call<Product>, t: Throwable) {
-//                binding.expandingListMain.food.text = "Wi-Fi is not connected"
+                binding.productTitleTextView.text = "Wi-Fi is not connected"
             }
 
             override fun onResponse(call: Call<Product>, response: Response<Product>) {
-//                binding.food.text = response.body()?.productName
+                if(response.body() != null){
+                    assignProduct(response.body()!!)
+                }else{
+                    binding.productTitleTextView.text = "EMPTY PRODUCT"
+                }
             }
         })
+
+    }
+
+    private fun assignProduct(product: Product){
+        binding.productTitleTextView.text = product.productName
+
+        var foodIngredientsText = ""
+        product.productComposition.foodIngredients.forEachIndexed { index, element ->
+            foodIngredientsText += if(index != product.productComposition.foodIngredients.size - 1){
+                "$element, "
+            }else{
+                element
+            }
+        }
+
+
+        var foodAdditivesText = ""
+        product.productComposition.foodAdditives.forEachIndexed { index, element ->
+            foodAdditivesText += if(index != product.productComposition.foodAdditives.size - 1){
+                "$element, "
+            }else{
+                element
+            }
+        }
+
+        binding.ingredientsTextView.text = foodIngredientsText
+        binding.eAddsTextView.text = foodAdditivesText
+
     }
 
 }
