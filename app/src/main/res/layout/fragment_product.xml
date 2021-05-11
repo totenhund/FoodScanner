@@ -3,208 +3,327 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".product.ProductFragment">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/mainFoodLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/foodInfoCard"
-                android:layout_width="0dp"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="70dp"
-                android:layout_marginEnd="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                tools:context=".product.ProductFragment">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/mainFoodLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/foodInfoCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="70dp"
+                        android:layout_marginEnd="16dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/productTitleTextView"
+                                style="@style/firstHeading"
+                                android:layout_width="match_parent"
+                                android:textAlignment="center"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:text="@string/titleProductEmpty"
+                                app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <RelativeLayout
+                                android:id="@+id/relativeLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                app:layout_constraintBottom_toTopOf="@+id/incidentsLayout"
+                                app:layout_constraintTop_toBottomOf="@+id/productTitleTextView">
+
+                                <TextView
+                                    android:id="@+id/caloriesTitle"
+                                    style="@style/text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/caloriesSpace"
+                                    android:text="@string/calories" />
+
+                                <TextView
+                                    android:id="@+id/gramTitle"
+                                    style="@style/text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/caloriesTitle"
+                                    android:layout_marginStart="@dimen/caloriesSpace"
+                                    android:layout_marginTop="@dimen/textSpace"
+                                    android:text="@string/gram" />
+
+                                <TextView
+                                    android:id="@+id/caloriesTextView"
+                                    style="@style/text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginEnd="@dimen/caloriesSpace"
+                                    android:text="@string/gramEmpty" />
+
+                                <TextView
+                                    android:id="@+id/gramTextView"
+                                    style="@style/text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/caloriesTextView"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginTop="@dimen/textSpace"
+                                    android:layout_marginEnd="@dimen/caloriesSpace"
+                                    android:text="@string/gramEmpty" />
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/incidentsLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="20dp"
+                                android:paddingBottom="16dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+                                <TextView
+                                    android:id="@+id/ingredientsTitle"
+                                    style="@style/secondHeading"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:text="@string/incidents" />
+
+                                <TextView
+                                    android:id="@+id/ingredientsTextView"
+                                    style="@style/text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/ingredientsTitle"
+                                    android:layout_marginTop="@dimen/textSpace"
+                                    android:text="@string/ingredientsEmpty"
+                                    android:textAlignment="center" />
+
+                            </RelativeLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/eAddsCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="16dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/foodInfoCard">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/eAddsTitle"
+                                style="@style/secondHeading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="16dp"
+                                android:text="@string/e_adds" />
+
+                            <TextView
+                                android:id="@+id/eAddsTextView"
+                                style="@style/text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/eAddsTitle"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="@dimen/textSpace"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginBottom="16dp"
+                                android:text="@string/ingredientsEmpty"
+                                android:textAlignment="center" />
+
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/resultCard"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="100dp"
+                        app:cardBackgroundColor="#FCA311"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/eAddsCard">
+
+                        <TextView
+                            android:id="@+id/resultTextView"
+                            style="@style/secondHeading"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/textSpace"
+                            android:layout_marginBottom="@dimen/textSpace"
+                            android:text="@string/mediumResult"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_gravity="bottom"
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:backgroundTint="#14213D"
+                app:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"
+                app:fabAlignmentMode="center"
+                app:theme="@style/Platform.MaterialComponents">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/productTitleTextView"
-                        style="@style/firstHeading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/titleProductEmpty"
-                        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+                    <View
+                        android:id="@+id/placeholder"
+                        android:layout_width="70dp"
+                        android:layout_height="0dp"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <RelativeLayout
-                        android:id="@+id/relativeLayout"
-                        android:layout_width="match_parent"
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/historyPageButton"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        app:layout_constraintBottom_toTopOf="@+id/incidentsLayout"
-                        app:layout_constraintTop_toBottomOf="@+id/productTitleTextView">
-
-                        <TextView
-                            android:id="@+id/caloriesTitle"
-                            style="@style/text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/caloriesSpace"
-                            android:text="@string/calories" />
-
-                        <TextView
-                            android:id="@+id/gramTitle"
-                            style="@style/text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/caloriesTitle"
-                            android:layout_marginStart="@dimen/caloriesSpace"
-                            android:layout_marginTop="@dimen/textSpace"
-                            android:text="@string/gram" />
-
-                        <TextView
-                            android:id="@+id/caloriesTextView"
-                            style="@style/text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginEnd="@dimen/caloriesSpace"
-                            android:text="@string/gramEmpty" />
-
-                        <TextView
-                            android:id="@+id/gramTextView"
-                            style="@style/text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/caloriesTextView"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="@dimen/textSpace"
-                            android:layout_marginEnd="@dimen/caloriesSpace"
-                            android:text="@string/gramEmpty" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/incidentsLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="20dp"
-                        android:paddingBottom="16dp"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="8dp"
+                        android:background="@null"
+                        android:contentDescription="@string/history_button"
+                        android:src="@drawable/ic_baseline_history_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/placeholder"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
-
-                        <TextView
-                            android:id="@+id/ingredientsTitle"
-                            style="@style/secondHeading"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:text="@string/incidents" />
-
-                        <TextView
-                            android:id="@+id/ingredientsTextView"
-                            style="@style/text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/ingredientsTitle"
-                            android:layout_marginTop="@dimen/textSpace"
-                            android:text="@string/ingredientsEmpty" />
-
-                    </RelativeLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/eAddsCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/foodInfoCard">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/eAddsTitle"
-                        style="@style/secondHeading"
+                        style="@style/sign_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/e_adds" />
+                        android:layout_marginTop="24dp"
+                        android:text="@string/history"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/placeholder"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/historyPageButton" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/analysisPageButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@null"
+                        android:contentDescription="@string/analyse_button"
+                        android:src="@drawable/ic_baseline_analytics_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/placeholder"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/eAddsTextView"
-                        style="@style/text"
-                        android:layout_width="match_parent"
+                        android:id="@+id/textView"
+                        style="@style/sign_text"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/eAddsTitle"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="@dimen/textSpace"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="16dp"
-                        android:text="@string/ingredientsEmpty"
-                        android:textAlignment="center" />
-
-                </RelativeLayout>
+                        android:layout_marginTop="24dp"
+                        android:text="@string/analysis"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/placeholder"
+                        app:layout_constraintTop_toTopOf="@id/analysisPageButton" />
 
 
-            </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/resultCard"
-                android:layout_width="0dp"
+            </com.google.android.material.bottomappbar.BottomAppBar>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/scanButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="32dp"
-                app:cardBackgroundColor="#FCA311"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eAddsCard">
+                android:backgroundTint="#BE3E3C"
+                android:contentDescription="@string/scan_button_text"
+                android:scaleType="center"
+                android:src="@drawable/ic_baseline_qr_code_scanner_24"
+                app:borderWidth="0dp"
+                app:fabCustomSize="70dp"
+                app:fabSize="auto"
+                app:layout_anchor="@id/app_bar"
+                app:tint="@android:color/white" />
 
-                <TextView
-                    android:id="@+id/resultTextView"
-                    style="@style/secondHeading"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/textSpace"
-                    android:layout_marginBottom="@dimen/textSpace"
-                    android:text="@string/mediumResult"
-                    android:textAlignment="center"
-                    android:textColor="@color/white" />
-
-            </androidx.cardview.widget.CardView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

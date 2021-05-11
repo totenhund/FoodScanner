@@ -9,5 +9,9 @@
     <string name="calories">Calories:</string>
     <string name="gram">Gram:</string>
     <string name="gramEmpty">300</string>
-    <string name="ingredientsEmpty">ingredients, ingredients</string>
+    <string name="ingredientsEmpty">ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients, ingredients</string>
+    <string name="analyse_button">analyse button</string>
+    <string name="history_button">history button</string>
+    <string name="history">History</string>
+    <string name="analysis">Analysis</string>
 </resources>

@@ -19,27 +19,103 @@
 
             <com.google.android.material.bottomappbar.BottomAppBar
                 android:id="@+id/app_bar"
-                app:menu="@menu/menu"
-                app:fabAttached="true"
-                android:layout_gravity="bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 app:backgroundTint="#14213D"
+                app:fabAlignmentMode="center"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetEnd="0dp"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:theme="@style/Platform.MaterialComponents" />
+                app:theme="@style/Platform.MaterialComponents">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/placeholder"
+                        android:layout_width="70dp"
+                        android:layout_height="0dp"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/historyPageButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@null"
+                        android:contentDescription="@string/history_button"
+                        android:src="@drawable/ic_baseline_history_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/placeholder"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        style="@style/sign_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/history"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/placeholder"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/historyPageButton" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/analysisPageButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@null"
+                        android:contentDescription="@string/analyse_button"
+                        android:src="@drawable/ic_baseline_analytics_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/placeholder"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        style="@style/sign_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/analysis"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/placeholder"
+                        app:layout_constraintTop_toTopOf="@id/analysisPageButton" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.bottomappbar.BottomAppBar>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/scanButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#BE3E3C"
+                android:contentDescription="@string/scan_button_text"
+                android:scaleType="center"
+                android:src="@drawable/ic_baseline_qr_code_scanner_24"
+                app:fabCustomSize="70dp"
+                app:fabSize="auto"
+                app:borderWidth="0dp"
                 app:layout_anchor="@id/app_bar"
-                android:contentDescription="TODO"
-
-                />
+                app:tint="@android:color/white" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
-        
+
     </LinearLayout>
-    
+
 
 </layout>
