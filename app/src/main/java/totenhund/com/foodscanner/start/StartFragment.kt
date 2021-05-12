@@ -10,14 +10,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_start.*
 import totenhund.com.foodscanner.R
 import totenhund.com.foodscanner.databinding.FragmentStartBinding
+import totenhund.com.foodscanner.start.product_history.ProductHistory
+import totenhund.com.foodscanner.start.product_history.ProductHistoryAdapter
 
 
 class StartFragment : Fragment() {
 
 
     private lateinit var binding: FragmentStartBinding
+    private lateinit var adapter: ProductHistoryAdapter
+    private lateinit var linearLayoutManager: LinearLayoutManager
 
     companion object {
         private const val CAMERA_PERMISSION_CODE = 100
@@ -34,6 +40,16 @@ class StartFragment : Fragment() {
             container,
             false
         )
+
+        linearLayoutManager = LinearLayoutManager(requireContext())
+        binding.productsHistoryListView.layoutManager = linearLayoutManager
+
+        val products = listOf<ProductHistory>(ProductHistory("Cola", listOf<String>("e342", "e131"), 300, "medium"),
+            ProductHistory("Cola", listOf<String>("e342", "e131"), 300, "medium"),
+            ProductHistory("Cola", listOf<String>("e342", "e131"), 300, "medium"),
+            ProductHistory("Cola", listOf<String>("e342", "e131"), 300, "medium"))
+        adapter = ProductHistoryAdapter(products)
+        binding.productsHistoryListView.adapter = adapter
 
         binding.scanButton.setOnClickListener {
             requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE)
