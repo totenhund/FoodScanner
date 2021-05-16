@@ -1,6 +1,6 @@
 package totenhund.com.requests.models
 
-data class Product(
+data class ProductVO(
     var productName: String,
     var idQrCode: String,
     var productComposition: ProductComposition

@@ -7,11 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import retrofit2.Call
 import totenhund.com.foodscanner.R
 import totenhund.com.foodscanner.databinding.FragmentProductBinding
-import totenhund.com.requests.models.Product
+import totenhund.com.requests.models.ProductVO
 import totenhund.com.requests.services.RetrofitServices
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,11 +23,13 @@ class ProductFragment : Fragment() {
 
     lateinit var binding: FragmentProductBinding
     private lateinit var mService: RetrofitServices
+    private lateinit var viewModel: ProductViewModel
+    private lateinit var viewModelFactory: ProductViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_product,
@@ -34,8 +37,12 @@ class ProductFragment : Fragment() {
             false
         )
 
-        mService = Common.retrofitServices
         val productFragmentArgs by navArgs<ProductFragmentArgs>()
+        viewModelFactory = ProductViewModelFactory(requireActivity().application, productFragmentArgs.qrCode)
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(ProductViewModel::class.java)
+
+        mService = Common.retrofitServices
         getProduct(productFragmentArgs.qrCode)
 
         return binding.root
@@ -43,14 +50,15 @@ class ProductFragment : Fragment() {
 
     private fun getProduct(qrCode: String){
 
-        mService.getProduct(qrCode).enqueue(object : Callback<Product>{
-            override fun onFailure(call: Call<Product>, t: Throwable) {
+        mService.getProduct(qrCode).enqueue(object : Callback<ProductVO>{
+            override fun onFailure(call: Call<ProductVO>, t: Throwable) {
                 binding.productTitleTextView.text = "Wi-Fi is not connected"
             }
 
-            override fun onResponse(call: Call<Product>, response: Response<Product>) {
+            override fun onResponse(call: Call<ProductVO>, response: Response<ProductVO>) {
                 if(response.body() != null){
                     assignProduct(response.body()!!)
+                    viewModel.addProduct(response.body()!!)
                 }else{
                     binding.productTitleTextView.text = "EMPTY PRODUCT"
                 }
@@ -59,7 +67,7 @@ class ProductFragment : Fragment() {
 
     }
 
-    private fun assignProduct(product: Product){
+    private fun assignProduct(product: ProductVO){
         binding.productTitleTextView.text = product.productName
 
         var foodIngredientsText = ""

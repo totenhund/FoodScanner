@@ -5,16 +5,15 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_start.*
 import totenhund.com.foodscanner.R
 import totenhund.com.foodscanner.databinding.FragmentStartBinding
-import totenhund.com.foodscanner.start.product_history.ProductHistory
 import totenhund.com.foodscanner.start.product_history.ProductHistoryAdapter
 
 
@@ -24,6 +23,9 @@ class StartFragment : Fragment() {
     private lateinit var binding: FragmentStartBinding
     private lateinit var adapter: ProductHistoryAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
+
+    private lateinit var viewModel: StartViewModel
+    private lateinit var viewModelFactory: StartViewModelFactory
 
     companion object {
         private const val CAMERA_PERMISSION_CODE = 100
@@ -41,15 +43,20 @@ class StartFragment : Fragment() {
             false
         )
 
+        viewModelFactory = StartViewModelFactory(requireActivity().application)
+        viewModel = ViewModelProvider(this, viewModelFactory)
+            .get(StartViewModel::class.java)
+
         linearLayoutManager = LinearLayoutManager(requireContext())
         binding.productsHistoryListView.layoutManager = linearLayoutManager
 
-        val products = listOf<ProductHistory>(ProductHistory("Cola", listOf<String>("e342", "e131"), 300, "medium"),
-            ProductHistory("Cola", listOf<String>("e342", "e131"), 300, "medium"),
-            ProductHistory("Cola", listOf<String>("e342", "e131"), 300, "medium"),
-            ProductHistory("Cola", listOf<String>("e342", "e131"), 300, "medium"))
-        adapter = ProductHistoryAdapter(products)
+        adapter = ProductHistoryAdapter(this)
+
         binding.productsHistoryListView.adapter = adapter
+
+        viewModel.allProducts.observe(viewLifecycleOwner, Observer {
+            adapter.setProducts(it)
+        })
 
         binding.scanButton.setOnClickListener {
             requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE)
