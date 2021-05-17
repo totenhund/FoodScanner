@@ -21,8 +21,6 @@ abstract class ProductDatabase: RoomDatabase() {
             }
             synchronized(this) {
                 val instance = Room.databaseBuilder(context.applicationContext, ProductDatabase::class.java, "Database")
-                    .allowMainThreadQueries()
-                    .fallbackToDestructiveMigration()
                     .build()
 
                 INSTANCE = instance

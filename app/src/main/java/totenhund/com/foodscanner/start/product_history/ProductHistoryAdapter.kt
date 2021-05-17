@@ -58,6 +58,7 @@ class ProductHistoryAdapter(private var fragment: Fragment): RecyclerView.Adapte
 
     fun setProducts(products: List<Product>){
         this.products = products
+        notifyDataSetChanged()
     }
 
     inner class ProductHistoryViewHolder(v: View) : RecyclerView.ViewHolder(v)

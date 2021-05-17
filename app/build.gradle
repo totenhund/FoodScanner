@@ -82,6 +82,8 @@ dependencies {
     // for coroutine
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+
     // qrCode
     implementation 'com.budiyev.android:code-scanner:2.1.0'
 

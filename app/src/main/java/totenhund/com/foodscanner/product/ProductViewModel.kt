@@ -2,6 +2,9 @@ package totenhund.com.foodscanner.product
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import timber.log.Timber
 import totenhund.com.database.DataConverter
 import totenhund.com.database.Product
 import totenhund.com.database.ProductDatabase
@@ -17,9 +20,11 @@ class ProductViewModel(application: Application, var qrCode: String): AndroidVie
         repository = ProductRepository(db.productDao())
     }
 
-    fun addProduct(product: ProductVO){
+    suspend fun addProduct(product: ProductVO){
         var dataConverter = DataConverter()
+        Timber.d("Product is added")
         repository.addProduct(Product(product.idQrCode, product.productName, "medium", dataConverter.fromCountryLangList(product.productComposition.foodAdditives), 100))
+        Timber.e("${repository.getAllProducts().size}")
     }
 
 

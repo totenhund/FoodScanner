@@ -4,6 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import timber.log.Timber
 import totenhund.com.database.Product
 import totenhund.com.database.ProductDatabase
 import totenhund.com.database.ProductRepository
@@ -18,20 +21,17 @@ class StartViewModel(application: Application): AndroidViewModel(application) {
     init {
         val productDao = ProductDatabase.getDatabase(application).productDao()
         val repository = ProductRepository(productDao)
-
-        if(repository.getAllProducts.value != null){
-            _allProducts.value = repository.getAllProducts.value
-        }else{
-            _allProducts.value = emptyList()
+        viewModelScope.launch {
+            _allProducts.value = repository.getAllProducts()
+            Timber.d("Len ${_allProducts.value?.size}, ${repository.getAllProducts().size}")
         }
-
     }
 
-    fun deleteAll(){
+    suspend fun deleteAll(){
         repository.deleteAll()
     }
 
-    fun getProductById(qrCode: String){
+    suspend fun getProductById(qrCode: String){
         repository.getProductById(qrCode)
     }
 

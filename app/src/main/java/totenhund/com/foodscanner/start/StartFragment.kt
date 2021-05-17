@@ -52,11 +52,13 @@ class StartFragment : Fragment() {
 
         adapter = ProductHistoryAdapter(this)
 
-        binding.productsHistoryListView.adapter = adapter
-
         viewModel.allProducts.observe(viewLifecycleOwner, Observer {
             adapter.setProducts(it)
         })
+
+        binding.productsHistoryListView.adapter = adapter
+
+
 
         binding.scanButton.setOnClickListener {
             requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION_CODE)

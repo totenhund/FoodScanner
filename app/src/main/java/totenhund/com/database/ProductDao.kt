@@ -11,15 +11,15 @@ import androidx.room.Query
 interface ProductDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addProduct(product: Product)
+    suspend fun addProduct(product: Product)
 
     @Query("select * from PRODUCTS")
-    fun getAllProducts():LiveData<List<Product>>
+    suspend fun getAllProducts():List<Product>
 
     @Query("select * from PRODUCTS where qrCode=:qrCode")
-    fun getProductById(qrCode: String): Product
+    suspend fun getProductById(qrCode: String): Product
 
     @Query("delete from PRODUCTS")
-    fun deleteAll()
+    suspend fun deleteAll()
 
 }
